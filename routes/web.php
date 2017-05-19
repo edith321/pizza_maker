@@ -3,6 +3,12 @@ Route:: get ('/', function (){
     return view ('welcome');
 });
 
+Route::group(['prefix' => 'game'], function () {
+    Route::get('/', ['uses' => 'PMGameController@create']);
+    Route::post('/', ['as' => 'app.upload.image', 'uses' => 'PMGameController@store']);
+});
+
+
 Route::group(['prefix' => 'pizza','middleware' => ['auth', 'notMemberRestriction']], function () {
     Route::get('/', ['uses' => 'PMPizzaOrderController@index']);
     Route::get('/create', ['uses' => 'PMPizzaOrderController@create']);

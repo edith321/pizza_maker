@@ -9,5 +9,6 @@
 @yield('list')
 @yield('pizzaOrderCreate')
 @yield('single')
+@yield('game')
 </body>
 </html>
