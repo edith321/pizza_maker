@@ -25,7 +25,6 @@ class CreateResourceTable extends Migration
                 $table->string('size', 255)->nullable();
             });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -33,8 +32,6 @@ class CreateResourceTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pm_resource', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('pm_resource');
     }
 }

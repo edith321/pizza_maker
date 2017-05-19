@@ -22,8 +22,6 @@ class CreatePmCheeseTable extends Migration {
 			$table->integer('calories');
 		});
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *

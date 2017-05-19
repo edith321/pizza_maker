@@ -14,8 +14,11 @@ class CreateUserResourceConnTable extends Migration
     public function up()
     {
         Schema::create('pm_users_resource_conn', function (Blueprint $table) {
+
             $table->integer('count', true);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('id', 36)->unique('id_UNIQUE');
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('user_id', 36)->nullable()->index('user_id');
             $table->string('resource_id', 36)->nullable()->index('fk_conn_user_resource_resource1_idx');
         });
@@ -29,8 +32,6 @@ class CreateUserResourceConnTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pm_users_resource_conn', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('pm_users_resource_conn');
     }
 }
