@@ -18,6 +18,7 @@ class PMGameController extends Controller
     {
         return view('front-end.game');
     }
+
     /**
      * Store the uploaded image.
      * POST /pmcheese
