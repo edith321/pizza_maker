@@ -2,6 +2,7 @@
 
 
 use App\Models\PMIngredients;
+use App\Models\PMUserResourcesConnections;
 
 class PMIngredientsController extends BaseAPIController
 {
@@ -63,10 +64,21 @@ class PMIngredientsController extends BaseAPIController
             $config['error'] = ['id' => 'Klaida 00002', 'message' => 'Neužpildytas laukas "Kalorijos"!'];
             return view('admin.adminPizzaPartsCreate', $config);
         }
+
+        $resources = request()->file('image');
+        $resourcesController = new PMResourceController();
+        $record = $resourcesController->upload($resources);
+
+        PMUserResourcesConnections::create([
+            "user_id" => auth()->user()->id,
+            "resource_id" => $record->id
+        ]);
+
         PMIngredients::create(
             [
                 'name' => $data['name'],
                 'calories' => $data['calories'],
+                'resource_id' => $data['image'],
             ]
         );
         $config['success_message'] = ['id' => 'Įrašas sėkmingai įrašytas į DB! ', 'message' => 'Sukurtas naujas ingridientas -  ' . $data['name']];

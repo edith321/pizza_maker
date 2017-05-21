@@ -14,5 +14,5 @@ class PMIngredients extends CoreModel
      * Fields which will be manipulated
      * @var array
      */
-    protected $fillable = ['id', 'name', 'calories'];
+    protected $fillable = ['id', 'name', 'calories', 'resource_id'];
 }

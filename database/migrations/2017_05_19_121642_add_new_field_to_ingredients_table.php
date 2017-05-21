@@ -14,7 +14,7 @@ class AddNewFieldToIngredientsTable extends Migration
     public function up()
     {
         Schema::table('pm_ingredients', function (Blueprint $table) {
-            $table->string('resource_id', 36)->nullable();
+            $table->string('resource_id', 36)->nullable()->index('resource_id');
         });
     }
 
